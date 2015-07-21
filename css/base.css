@@ -1,55 +1,89 @@
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  background-color: #456;
-  margin: 0px;
-  padding: 0px;
-  transition: background-color, 10s;
+    margin: 0px;
+    height: 100%;
+    background-color: #dadad4;
+    color: #000;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#wrap {
+    padding-top: 15%;
+    margin: 0px auto 0px;
+    width: 450px;
+    opacity: 0.75;
+}
+
+img.logo {
+    display: inline-block;
+    border-right: 2px solid #000;
+    margin-right: 20px;
+}
+
+nav {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
 }
 
 h1 {
-  cursor: default;
-  display: block;
-  text-align: center;
-  margin: 15px auto 15px auto;
-  color: #cde;
-  font-family: 'Open Sans', sans-serif;
-  letter-spacing: 5px;
-  font-variant: small-caps;
+    margin: 15px 0px 10px;
 }
 
-body > div {
-  margin: 0px auto 0px auto;
-  text-align: center;
+h2 {
+    margin: 0px 0px 15px;
+    font-size: 1em;
 }
 
-header.logo {
-  display: block;
-  background-color: white;
-  border-radius: 150px;
-  border: 3px solid #333;
-  margin: 15% auto 0px auto;
-  text-align: center;
-  width: 200px;
+#places ul {
+    margin: 0px;
+    padding: 0px;
 }
 
-a {	
-  display: inline-block;
-  margin: 0px 15px 0px 15px;
-  color: #cde;
-  font-weight: 100;
-  letter-spacing: 1px;
-  text-decoration: none;
-  font-family: Karma, serif;
+#places li {
+    list-style: none;
 }
 
-a:hover {
-  border-bottom: 2px solid #cde;
+#places a {
+    display: inline-block;
+    margin: 2px 0px 2px;
+    text-decoration: none;
+    color: #000;
 }
 
-img {
-  display: inline-block;
+#places a:hover {
+    margin: 2px 0px 0px;
+    border-bottom: 2px solid #333;
 }
 
+@media only screen
+and (min-device-width: 300px)
+and (max-device-width: 400px)
+and (orientation: portrait) {
+    #wrap {
+        padding-top: 30%;
+        font-size: 1.75em;
+    }
+
+    #wrap {
+        width: 700px;
+    }
+
+    h1 {
+        margin: 7px 0px 7px;
+    }
+
+    img.logo {
+        width: 350px;
+        border-right: 4px solid #000;
+        margin-right: 30px;
+    }
+
+    #places a {
+        display: inline-block;
+        margin: 5px 0px 5px;
+    }
+}
