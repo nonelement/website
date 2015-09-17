@@ -12,78 +12,75 @@ body {
 
 #wrap {
     padding-top: 15%;
-    margin: 0px auto 0px;
-    width: 450px;
+    margin: auto;
+    width: 200px;
     opacity: 0.75;
 }
 
 img.logo {
     display: inline-block;
-    border-right: 2px solid #000;
-    margin-right: 20px;
 }
 
 nav {
     display: inline-block;
     vertical-align: top;
     width: 200px;
+    text-align: center;
 }
 
-h1 {
-    margin: 15px 0px 10px;
+nav h1 {
+    margin: 10px 0px 5px;
 }
 
-h2 {
-    margin: 0px 0px 15px;
+nav h2 {
+    margin: 0px 0px 20px;
     font-size: 1em;
 }
 
-#places ul {
+nav ul {
     margin: 0px;
     padding: 0px;
 }
 
-#places li {
+nav li {
     list-style: none;
+    line-height: 1.5em;
+    margin-bottom: 15px;
 }
 
-#places a {
+nav a {
     display: inline-block;
     margin: 2px 0px 2px;
     text-decoration: none;
     color: #000;
 }
 
-#places a:hover {
+nav a:hover {
     margin: 2px 0px 0px;
     border-bottom: 2px solid #333;
 }
 
-@media only screen
-and (min-device-width: 300px)
-and (max-device-width: 500px)
-and (orientation: portrait) {
+@media (min-width: 400px) {
     #wrap {
-        padding-top: 50%;
-        font-size: 1.75em;
+        margin: 50px auto 0px;
+        width: 90%;
+        text-align: center;
     }
 
-    #wrap {
-        width: 700px;
+    img {
+        margin-top: 10px;
     }
 
-    h1 {
-        margin: 7px 0px 7px;
+    nav {
+        width: initial;
+        text-align: left;
     }
 
-    img.logo {
-        width: 350px;
-        border-right: 4px solid #000;
-        margin-right: 30px;
+    nav h2 {
+        margin: 0px 0px 10px;
     }
 
-    #places a {
-        display: inline-block;
-        margin: 5px 0px 5px;
+    nav li {
+        margin: 0px;
     }
 }
