@@ -15,6 +15,7 @@ header h1 {
     margin: 0px;
     font-weight: 100;
     line-height: 1em;
+
 }
 
 header h2 {
@@ -29,7 +30,7 @@ header h2 {
     font-size: 5em;
     top: 0%;
     left: 0px;
-    color: rgba(200,200,200,.8);
+    color: #ccc;
 }
 
 @media (min-width: 400px) {

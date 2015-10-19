@@ -5,34 +5,39 @@ html {
 body {
     margin: 0px;
     height: 100%;
-    background-color: #dadad4;
-    color: #000;
+    background-color: #ffffff;
+    color: #444;
     font-family: 'Open Sans', sans-serif;
 }
 
 #wrap {
-    padding-top: 18%;
+    padding-top: 10%;
     margin: auto;
     width: 200px;
-    opacity: 0.75;
+}
+
+#wrap header {
+    text-align: center;
 }
 
 img.logo {
     display: inline-block;
+    width: 150px;
+    opacity: 0.8;
 }
 
 nav {
-    display: inline-block;
+    display: block;
     vertical-align: top;
     width: 200px;
     text-align: center;
 }
 
-nav h1 {
-    margin: 10px 0px 5px;
+#wrap h1 {
+    margin: 0px 0px 5px;
 }
 
-nav h2 {
+#wrap h2 {
     margin: 0px 0px 20px;
     font-size: 1em;
 }
@@ -40,47 +45,139 @@ nav h2 {
 nav ul {
     margin: 0px;
     padding: 0px;
+    text-align: left;
 }
 
 nav li {
     list-style: none;
-    line-height: 1.5em;
     margin-bottom: 15px;
+    text-align: center;
+    line-height: 1.5em;
 }
 
 nav a {
     display: inline-block;
-    margin: 2px 0px 2px;
     text-decoration: none;
-    color: #000;
+    color: #444;
+    background-color: #ffffff;
 }
 
-nav a:hover {
-    margin: 2px 0px 0px;
-    border-bottom: 2px solid #333;
+.tile {
+    width: 120px;
+    height: 120px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fefefe;
 }
 
-@media (min-width: 400px) {
+/*
+    Icon set: Swifticons (Outlined)
+    Author: Darius Dan
+    Retrieved from: http://www.smashingmagazine.com/2015/03/freebie-swifticons-icon-set/
+    License: http://creativecommons.org/licenses/by/4.0/
+ */
+
+.twitter {
+    background-image: url("../img/tw_outline.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.github {
+    background-image: url("../img/bs_outline.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blog {
+    background-image: url("../img/bp_outline.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.experiments {
+    background-image: url("../img/tt_outline.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.about {
+    background-image: url("../img/t_outline.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Magic numbers */
+/*.blog, .experiments, .about {
+    padding-top: 46px;
+    height: 70px;
+    width: 116px;
+    border: 2px dashed #cccccc;
+}*/
+
+@media (min-width: 300px) {
+    img.logo {
+        width: 75px;
+        float: left;
+    }
+
     #wrap {
-        margin: 0px auto 0px;
-        width: 90%;
-        text-align: center;
+        width: 300px;
     }
 
-    img {
-        margin-top: 10px;
-    }
-
-    nav {
-        width: initial;
+    #wrap header, nav {
+        width: 275px;
+        height: 75px;
+        margin: auto;
         text-align: left;
     }
 
-    nav h2 {
-        margin: 0px 0px 10px;
+    nav {
+        margin-top: 25px;
     }
 
     nav li {
-        margin: 0px;
+        display: inline-block;
+        padding: 2%;
+    }
+}
+
+@media (min-width: 600px) {
+    img.logo {
+        width: 150px;
+        margin-top: -20px;
+    }
+
+    #wrap {
+        width: 600px;
+    }
+
+    #wrap header {
+        width: 80%;
+        padding-top: 20px;
+        height: 150px;
+    }
+
+    #wrap h1 {
+        font-size: 3em;
+        margin-bottom: 0px;
+    }
+
+    #wrap h2 {
+        font-size: 1em;
+        margin-bottom: 0px;
+    }
+
+    nav {
+        width: 80%;
+        margin-top: 0px;
+    }
+
+    .tile {
     }
 }
