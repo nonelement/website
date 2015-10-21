@@ -6,7 +6,7 @@ body {
     margin: 0px;
     height: 100%;
     background-color: #ffffff;
-    color: #444;
+    color: #414141;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -43,7 +43,7 @@ nav {
 }
 
 nav ul {
-    margin: 0px;
+    margin: 0px 0px 0px 10px;
     padding: 0px;
     text-align: left;
 }
@@ -65,49 +65,44 @@ nav a {
 .tile {
     width: 120px;
     height: 120px;
+    position: relative;
     font-weight: bold;
     vertical-align: top;
     color: #fefefe;
+    opacity: 0.7;
 }
 
-/*
-    Icon set: Swifticons (Outlined)
-    Author: Darius Dan
-    Retrieved from: http://www.smashingmagazine.com/2015/03/freebie-swifticons-icon-set/
-    License: http://creativecommons.org/licenses/by/4.0/
- */
-
 .twitter {
-    background-image: url("../img/tw_outline.png");
+    background-image: url("../img/twitter.png");
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .github {
-    background-image: url("../img/bs_outline.png");
+    background-image: url("../img/code.png");
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .blog {
-    background-image: url("../img/bp_outline.png");
+    background-image: url("../img/blog2.png");
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .experiments {
-    background-image: url("../img/tt_outline.png");
-    background-size: 70%;
+    background-image: url("../img/experiments.png");
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .about {
-    background-image: url("../img/t_outline.png");
-    background-size: 70%;
+    background-image: url("../img/about.png");
+    background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
 }
