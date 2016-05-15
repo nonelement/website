@@ -1,0 +1,22 @@
+{
+  "name": "nonelement",
+  "version": "1.0.0",
+  "description": "website!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nonelement/nonelement.git"
+  },
+  "author": "Anthony Kirkpatrick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nonelement/nonelement/issues"
+  },
+  "homepage": "https://github.com/nonelement/nonelement#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
