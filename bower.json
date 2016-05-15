@@ -1,0 +1,15 @@
+{
+  "name": "nonelement",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nonelement/website",
+  "authors": [
+    "Anthony Kirkpatrick <anthony.j.kirkpatrick@gmail.com>"
+  ],
+  "description": "personal website",
+  "main": "index.html",
+  "keywords": [
+    "website",
+    "identity"
+  ],
+  "license": "MIT"
+}

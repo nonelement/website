@@ -1,0 +1,51 @@
+body {
+    text-align: center;
+}
+
+header {
+    z-index: 1;
+    display: block;
+    width: 60%;
+    margin: auto;
+    margin-top: 30%;
+}
+
+header h1 {
+    font-size: 5.5em;
+    margin: 0px;
+    font-weight: 100;
+    line-height: 1em;
+
+}
+
+header h2 {
+    font-size: 1.0em;
+    margin-top: 40px;
+}
+
+.large-bg {
+    z-index: -9;
+    position: absolute;
+    width: 100%;
+    font-size: 5em;
+    top: 0%;
+    left: 0px;
+    color: #ccc;
+}
+
+@media (min-width: 400px) {
+    .large-bg {
+        top: 5%;
+    }
+
+    header {
+        width: 90%;
+    }
+}
+
+@media (min-width: 600px) {
+    .large-bg {
+        font-size: 20em;
+        top: 10%;
+    }
+}

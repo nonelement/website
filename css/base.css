@@ -1,0 +1,178 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    background-color: #ffffff;
+    color: #414141;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#wrap {
+    padding-top: 10%;
+    margin: auto;
+    width: 200px;
+}
+
+#wrap header {
+    text-align: center;
+}
+
+img.logo {
+    display: inline-block;
+    width: 150px;
+    opacity: 0.8;
+}
+
+nav {
+    display: block;
+    vertical-align: top;
+    width: 200px;
+    text-align: center;
+}
+
+#wrap h1 {
+    margin: 0px 0px 5px;
+}
+
+#wrap h2 {
+    margin: 0px 0px 20px;
+    font-size: 1em;
+}
+
+nav ul {
+    margin: 0px 0px 0px 10px;
+    padding: 0px;
+    text-align: left;
+}
+
+nav li {
+    list-style: none;
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: #444;
+    background-color: #ffffff;
+}
+
+.tile {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fefefe;
+    opacity: 0.7;
+}
+
+.twitter {
+    background-image: url("../img/twitter.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.github {
+    background-image: url("../img/code.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blog {
+    background-image: url("../img/blog2.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.experiments {
+    background-image: url("../img/experiments.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.about {
+    background-image: url("../img/about.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Magic numbers */
+/*.blog, .experiments, .about {
+    padding-top: 46px;
+    height: 70px;
+    width: 116px;
+    border: 2px dashed #cccccc;
+}*/
+
+@media (min-width: 300px) {
+    img.logo {
+        width: 75px;
+        float: left;
+    }
+
+    #wrap {
+        width: 300px;
+    }
+
+    #wrap header, nav {
+        width: 275px;
+        height: 75px;
+        margin: auto;
+        text-align: left;
+    }
+
+    nav {
+        margin-top: 25px;
+    }
+
+    nav li {
+        display: inline-block;
+        padding: 2%;
+    }
+}
+
+@media (min-width: 600px) {
+    img.logo {
+        width: 150px;
+        margin-top: -20px;
+    }
+
+    #wrap {
+        width: 600px;
+    }
+
+    #wrap header {
+        width: 80%;
+        padding-top: 20px;
+        height: 150px;
+    }
+
+    #wrap h1 {
+        font-size: 3em;
+        margin-bottom: 0px;
+    }
+
+    #wrap h2 {
+        font-size: 1em;
+        margin-bottom: 0px;
+    }
+
+    nav {
+        width: 80%;
+        margin-top: 0px;
+    }
+
+    .tile {
+    }
+}
