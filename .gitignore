@@ -6,3 +6,6 @@ node_modules
 
 // Built
 dist/*
+
+// Secrets
+credentials.json
