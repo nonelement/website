@@ -1,3 +1,12 @@
+@body-background-color: #ffffff;
+@body-text-color: #414141;
+
+.nav-img (@size: 70%) {
+    background-size: @size;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 html {
     height: 100%;
 }
@@ -5,8 +14,8 @@ html {
 body {
     margin: 0px;
     height: 100%;
-    background-color: #ffffff;
-    color: #414141;
+    background-color: @body-background-color;
+    color: @body-text-color;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -43,7 +52,7 @@ nav {
 }
 
 nav ul {
-    margin: 0px 0px 0px 10px;
+    margin: 0px 0px 0px auto;
     padding: 0px;
     text-align: left;
 }
@@ -58,8 +67,8 @@ nav li {
 nav a {
     display: inline-block;
     text-decoration: none;
-    color: #444;
-    background-color: #ffffff;
+    color: @body-text-color;
+    background-color: @body-background-color;
 }
 
 .tile {
@@ -68,52 +77,34 @@ nav a {
     position: relative;
     font-weight: bold;
     vertical-align: top;
-    color: #fefefe;
+    color: @body-background-color;
     opacity: 0.7;
 }
 
 .twitter {
     background-image: url("../img/twitter.png");
-    background-size: 80%;
-    background-repeat: no-repeat;
-    background-position: center;
+    .nav-img(80%);
 }
 
 .github {
     background-image: url("../img/code.png");
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
+    .nav-img(70%);
 }
 
 .blog {
     background-image: url("../img/blog2.png");
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
+    .nav-img(70%);
 }
 
 .experiments {
     background-image: url("../img/experiments.png");
-    background-size: 80%;
-    background-repeat: no-repeat;
-    background-position: center;
+    .nav-img(80%);
 }
 
 .about {
     background-image: url("../img/about.png");
-    background-size: 75%;
-    background-repeat: no-repeat;
-    background-position: center;
+    .nav-img(75%);
 }
-
-/* Magic numbers */
-/*.blog, .experiments, .about {
-    padding-top: 46px;
-    height: 70px;
-    width: 116px;
-    border: 2px dashed #cccccc;
-}*/
 
 @media (min-width: 300px) {
     img.logo {
@@ -171,8 +162,5 @@ nav a {
     nav {
         width: 80%;
         margin-top: 0px;
-    }
-
-    .tile {
     }
 }
