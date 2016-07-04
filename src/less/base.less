@@ -1,19 +1,31 @@
 
 @import 'https://fonts.googleapis.com/css?family=Lustria|Raleway:300,400';
 
+@hover-speed: 0.5s;
 @page-width: 60%;
 @page-serif: "Lustria", "Times New Roman";
 @page-sans: "Raleway", Helvetica, sans-serif;
 
-@body-background-color: #ffffff;
-@body-text-color: #414141;
+@page-background-color: #ffffff;
+@page-text-color: #414141;
 
-.nav-img (@url: "?", @size: 100%) {
+.nav-img (@url: "?", @color: #dddddd, @size: 80%) {
     background-image: url(@url);
     background-size: @size;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.75;
+    border-radius: 3px;
+
+    transition: all @hover-speed;
+    background-color: @page-background-color;
+    border: 2px solid @page-background-color;
+
+    &:hover {
+        transition: all @hover-speed;
+        background-color: @color;
+        border: 2px solid darken(@color, 10%);
+    }
 }
 
 .zero-edges {
@@ -59,7 +71,7 @@ header {
 }
 
 nav {
-    width: @page-width - 10%;
+    width: @page-width;
     margin: 15px auto 15px;
     text-align: center;
 
@@ -69,12 +81,12 @@ nav {
 
     li {
         display: inline-block;
-        padding: 5px;
+        padding: 0px 5px 0px;
 
         a {
             display: inline-block;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             padding: 5px;
         }
     }
@@ -87,14 +99,16 @@ aside {
     font-weight: 400;
 }
 
+/* color src: Twitter Branding */
 .twitter {
-    .nav-img("../img/twitter.png");
+    .nav-img("../img/twitter.png", #55acee);
 }
 
 .github {
     .nav-img("../img/code.png");
 }
 
+/* color src: Medium Branding */
 .blog {
-    .nav-img("../img/blog2.png");
+    .nav-img("../img/blog2.png", #00AB6C);
 }
