@@ -1,10 +1,36 @@
-@body-background-color: #ffffff;
-@body-text-color: #414141;
 
-.nav-img (@size: 70%) {
+@import 'https://fonts.googleapis.com/css?family=Lustria|Raleway:300,400';
+
+@hover-speed: 0.5s;
+@page-width: 60%;
+@page-serif: "Lustria", "Times New Roman";
+@page-sans: "Raleway", Helvetica, sans-serif;
+
+@page-background-color: #ffffff;
+@page-text-color: #414141;
+
+.nav-img (@url: "?", @color: #dddddd, @size: 80%) {
+    background-image: url(@url);
     background-size: @size;
     background-repeat: no-repeat;
     background-position: center;
+    opacity: 0.75;
+    border-radius: 3px;
+
+    transition: all @hover-speed;
+    background-color: @page-background-color;
+    border: 2px solid @page-background-color;
+
+    &:hover {
+        transition: all @hover-speed;
+        background-color: @color;
+        border: 2px solid darken(@color, 10%);
+    }
+}
+
+.zero-edges {
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -12,155 +38,77 @@ html {
 }
 
 body {
-    margin: 0px;
+    .zero-edges;
     height: 100%;
-    background-color: @body-background-color;
-    color: @body-text-color;
-    font-family: 'Open Sans', sans-serif;
+    min-width: 315px;
 }
 
-#wrap {
-    padding-top: 10%;
-    margin: auto;
-    width: 200px;
+body > div {
+    width: @page-width;
+    margin: 0px auto;
+    padding: 150px 50px 50px;
 }
 
-#wrap header {
+header {
     text-align: center;
-}
 
-img.logo {
-    display: inline-block;
-    width: 150px;
-    opacity: 0.8;
+    h1 {
+        font-family: @page-serif;
+        letter-spacing: 1px;
+        .zero-edges;
+    }
+
+    h2 {
+        font-family: @page-sans;
+        font-weight: 400;
+        width: @page-width;
+        margin: 0px auto;
+    }
+
+    h2 + h2 {
+        border-top: 2px solid black;
+    }
 }
 
 nav {
-    display: block;
-    vertical-align: top;
-    width: 200px;
+    width: @page-width;
+    margin: 15px auto 15px;
     text-align: center;
+
+    ul {
+        .zero-edges;
+    }
+
+    li {
+        display: inline-block;
+        padding: 0px 5px 0px;
+
+        a {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            padding: 5px;
+        }
+    }
 }
 
-#wrap h1 {
-    margin: 0px 0px 5px;
-}
-
-#wrap h2 {
-    margin: 0px 0px 20px;
-    font-size: 1em;
-}
-
-nav ul {
-    margin: 0px 0px 0px auto;
-    padding: 0px;
-    text-align: left;
-}
-
-nav li {
-    list-style: none;
-    margin-bottom: 15px;
+aside {
+    .zero-edges;
     text-align: center;
-    line-height: 1.5em;
+    font-family: @page-sans;
+    font-weight: 400;
 }
 
-nav a {
-    display: inline-block;
-    text-decoration: none;
-    color: @body-text-color;
-    background-color: @body-background-color;
-}
-
-.tile {
-    width: 120px;
-    height: 120px;
-    position: relative;
-    font-weight: bold;
-    vertical-align: top;
-    color: @body-background-color;
-    opacity: 0.7;
-}
-
+/* color src: Twitter Branding */
 .twitter {
-    background-image: url("../img/twitter.png");
-    .nav-img(80%);
+    .nav-img("../img/twitter.png", #55acee);
 }
 
 .github {
-    background-image: url("../img/code.png");
-    .nav-img(70%);
+    .nav-img("../img/code.png");
 }
 
+/* color src: Medium Branding */
 .blog {
-    background-image: url("../img/blog2.png");
-    .nav-img(70%);
-}
-
-.experiments {
-    background-image: url("../img/experiments.png");
-    .nav-img(80%);
-}
-
-.about {
-    background-image: url("../img/about.png");
-    .nav-img(75%);
-}
-
-@media (min-width: 300px) {
-    img.logo {
-        width: 75px;
-        float: left;
-    }
-
-    #wrap {
-        width: 300px;
-    }
-
-    #wrap header, nav {
-        width: 275px;
-        height: 75px;
-        margin: auto;
-        text-align: left;
-    }
-
-    nav {
-        margin-top: 25px;
-    }
-
-    nav li {
-        display: inline-block;
-        padding: 2%;
-    }
-}
-
-@media (min-width: 600px) {
-    img.logo {
-        width: 150px;
-        margin-top: -20px;
-    }
-
-    #wrap {
-        width: 600px;
-    }
-
-    #wrap header {
-        width: 80%;
-        padding-top: 20px;
-        height: 150px;
-    }
-
-    #wrap h1 {
-        font-size: 3em;
-        margin-bottom: 0px;
-    }
-
-    #wrap h2 {
-        font-size: 1em;
-        margin-bottom: 0px;
-    }
-
-    nav {
-        width: 80%;
-        margin-top: 0px;
-    }
+    .nav-img("../img/blog2.png", #00AB6C);
 }
