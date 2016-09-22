@@ -1,8 +1,12 @@
-var path = require('path'),
+var fs = require('fs'),
+    path = require('path'),
     gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    less = require('gulp-less'),
     clean = require('gulp-clean'),
+    less = require('gulp-less'),
+    markdown = require('gulp-markdown'),
+    mustache = require('gulp-mustache'),
+    replace = require('gulp-replace'),
+    gutil = require('gulp-util'),
     ftp = require('vinyl-ftp'),
     creds = require('./credentials.json'),
 
@@ -26,6 +30,7 @@ var path = require('path'),
         'css': 'css',
         'js': 'js',
         'img': 'img',
+        'writing': 'writing',
         'err': 'err'
     };
 
@@ -38,6 +43,24 @@ for(prop in clean_targets) {
                 ).pipe(clean());
             }
     }(prop));
+}
+
+function readFirstLine(name, filter, cb) {
+    var data, lines, line;
+
+    if (!cb) {
+        cb = filter;
+        filter = null;
+    }
+
+    data = fs.readFileSync(name);
+    lines = data.toString().split('\n');
+
+    if (filter) {
+        line = filter(lines[0]);
+    }
+
+    cb(null, line);
 }
 
 gulp.task('less', ['clean-css'], function () {
@@ -54,6 +77,97 @@ gulp.task('js', ['clean-js'], function () {
 gulp.task('html', ['clean-html'], function () {
     return gulp.src(path.join('src', 'index.html'))
         .pipe(gulp.dest(path.join('dist')));
+});
+
+
+gulp.task('index-posts', ['clean-writing'], function () {
+    var path_md = path.join('src', 'writing', 'md'),
+        re_md = /\.(md)$/,
+        default_content = `<span> Nothing here! </span>`,
+        glob = [],
+        dir,
+        stream;
+    try {
+        dir = fs.readdirSync(path_md);
+        dir.forEach(function (file) {
+            readFirstLine(
+                path.join(path_md, file),
+                function (title) {
+                    return title.replace(/#/g, "").trim();
+                },
+                function (err, title) {
+                    if (err) {
+                        gutil.log(err);
+                    } else {
+                        var filename = file.replace(re_md, ".html");
+                        glob.push({ "name":filename, "title": title });
+                    }
+                }
+            );
+        });
+    } catch (e) {
+        gutil.log("There was a problem reading md: ", e);
+    }
+
+    return gulp.src(path.join('src', 'writing', 'index.html'))
+        .pipe(mustache({ posts: glob }))
+        .pipe(gulp.dest(path.join('dist', 'writing')));
+});
+
+gulp.task('posts', ['clean-writing', 'index-posts'], function () {
+    return gulp.src(path.join('src', 'writing', '**/*.md'),{
+            base: path.join('src', 'writing', 'md')
+        })
+        .pipe(markdown())
+        .pipe(gulp.dest(path.join('dist', 'writing'), {
+            base: '..'
+        }));
+});
+
+// For build supertask
+gulp.task('_index-posts', ['clean-all'], function () {
+    var path_md = path.join('src', 'writing', 'md'),
+        re_md = /\.(md)$/,
+        default_content = `<span> Nothing here! </span>`,
+        glob = [],
+        dir,
+        stream;
+    try {
+        dir = fs.readdirSync(path_md);
+        dir.forEach(function (file) {
+            readFirstLine(
+                path.join(path_md, file),
+                function (title) {
+                    return title.replace(/#/g, "").trim();
+                },
+                function (err, title) {
+                    if (err) {
+                        gutil.log(err);
+                    } else {
+                        var filename = file.replace(re_md, ".html");
+                        glob.push({ "name":filename, "title": title });
+                    }
+                }
+            );
+        });
+    } catch (e) {
+        gutil.log("There was a problem reading md: ", e);
+    }
+
+    return gulp.src(path.join('src', 'writing', 'index.html'))
+        .pipe(mustache({ posts: glob }))
+        .pipe(gulp.dest(path.join('dist', 'writing')));
+});
+
+// For build supertask
+gulp.task('_posts', ['clean-all', '_index-posts'], function () {
+    return gulp.src(path.join('src', 'writing', '**/*.md'),{
+            base: path.join('src', 'writing', 'md')
+        })
+        .pipe(markdown())
+        .pipe(gulp.dest(path.join('dist', 'writing'), {
+            base: '..'
+        }));
 });
 
 // For build supertask
@@ -90,7 +204,15 @@ gulp.task('config', ['clean-all'], function () {
         .pipe(gulp.dest(path.join('dist')));
 });
 
-gulp.task('build', ['_html', '_js', '_less', 'config', 'err', 'img']);
+gulp.task('build', [
+    '_html',
+    '_js',
+    '_less',
+    '_posts',
+    'config',
+    'err',
+    'img'
+]);
 
 gulp.task('deploy', ['build'], function () {
     return gulp.src('dist/**/*', { buffer: false })
