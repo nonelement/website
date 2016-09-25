@@ -8,7 +8,61 @@ var fs = require('fs'),
     replace = require('gulp-replace'),
     gutil = require('gulp-util'),
     ftp = require('vinyl-ftp'),
+    through2 = require('through2'),
     creds = require('./credentials.json'),
+
+    /*
+     * Impromptu plugin-like fn for wrapping
+     * piped contents in a template. Uses plugin-name
+     * 'custom-wrapWith' for errors.
+     */
+    wrapWith = function (template, marker, newExt) {
+        return through2.obj(function (file, enc, callback) {
+            fs.readFile(template, function (err, template_data) {
+                // throw an error if we failed to read the template
+                if (err) {
+                    cb(new gutil.PluginError(
+                        'custom-wrapWith',
+                        err,
+                        { fileName: file.path }
+                    ));
+                    return;
+                }
+                // grab leading characters for formatting
+                var leads = leadingChars(template_data.toString(), marker),
+                // transform input by formatting it
+                    prepped = file.contents
+                        .toString()
+                        .trim()
+                        .replace(/\n/g, '\n' + leads),
+                // "compile" template
+                    compiled = template_data
+                        .toString()
+                        .replace(
+                            marker,
+                            prepped
+                        );
+                file.contents = new Buffer(compiled);
+                if (newExt) {
+                    file.path = gutil.replaceExtension(file.path, newExt);
+                }
+                callback(null, file);
+            });
+        });
+    },
+
+    // Returns characters leading some marker
+    leadingChars = function (str, marker) {
+        var lines = str.split('\n'),
+            index, leading;
+        lines.forEach(function (line) {
+            index = line.indexOf(marker);
+            if (index > -1) {
+                leading = line.substring(0, index);
+            }
+        });
+        return leading;
+    }
 
     ftp_connection = ftp.create({
         host: creds.host,
@@ -115,11 +169,17 @@ gulp.task('index-posts', ['clean-writing'], function () {
 });
 
 gulp.task('posts', ['clean-writing', 'index-posts'], function () {
-    return gulp.src(path.join('src', 'writing', '**/*.md'),{
-            base: path.join('src', 'writing', 'md')
+    var path_writing = path.join('src', 'writing');
+    return gulp.src(path.join(path_writing, '**/*.md'),{
+            base: path.join(path_writing, 'md')
         })
         .pipe(markdown())
-        .pipe(gulp.dest(path.join('dist', 'writing'), {
+        .pipe(
+            wrapWith(
+                path.join(path_writing, 'templates', 'post.html'),
+                "{{markdown}}"
+            )
+        ).pipe(gulp.dest(path.join('dist', 'writing'), {
             base: '..'
         }));
 });
