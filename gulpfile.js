@@ -109,8 +109,11 @@ var fs = require('fs'),
 
     build_targets = {
         'less': {
-            'src': path.join('src', 'less', '*.less'),
-            'dest': path.join('dist', 'css')
+            'fn': function () {
+                return gulp.src(path.join('src', 'less', '*.less'))
+                    .pipe(less())
+                    .pipe(gulp.dest(path.join('dist', 'css')));
+            }
         },
         'js': {
             'src': path.join('src', 'less', '*.less'),
