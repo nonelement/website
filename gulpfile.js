@@ -94,16 +94,18 @@ var fs = require('fs'),
     watch_targets = {
         'html': "src/index.html",
         'js': "src/**/*.js",
-        'less': "src/**/*.less"
+        'less': "src/**/*.less",
+        'templates': "src/blog/*.html"
     },
 
     clean_targets = {
         'all': '',
         'html': 'index.html',
-        'css': 'css',
+        'less': 'css',
         'js': 'js',
         'img': 'img',
         'posts': 'posts',
+        'index-posts': 'posts/index.html',
         'err': 'err'
     },
 
@@ -125,8 +127,8 @@ var fs = require('fs'),
         },
         'posts': {
             'fn': function () {
-                var path_writing = path.join('src', 'posts');
-                return gulp.src(path.join(path_writing, '**/*.md'),{
+                var path_writing = path.join('src', 'blog');
+                return gulp.src(path.join(path_writing, 'posts/*.md'),{
                         base: path.join(path_writing, 'md')
                     })
                     .pipe(markdown())
@@ -135,14 +137,14 @@ var fs = require('fs'),
                             path.join(path_writing, 'templates', 'post.html'),
                             "{{markdown}}"
                         )
-                    ).pipe(gulp.dest(path.join('dist', 'posts'), {
+                    ).pipe(gulp.dest(path.join('dist', 'blog', 'posts'), {
                         base: '..'
                     }));
             }
         },
         'index-posts': {
             'fn': function () {
-                var path_md = path.join('src', 'posts', 'md'),
+                var path_md = path.join('src', 'blog', 'posts'),
                     re_md = /\.(md)$/,
                     default_content = `<span> Nothing here! </span>`,
                     glob = [],
@@ -153,15 +155,24 @@ var fs = require('fs'),
                     dir.forEach(function (file) {
                         readFirstLine(
                             path.join(path_md, file),
-                            function (title) {
-                                return title.replace(/#/g, "").trim();
+                            function (title, filename) {
+                                if (title.indexOf("#") > -1) {
+                                    return title.replace(/#/g, "").trim();
+                                } else if (title.indexOf("<!--") > -1) {
+                                    return title.replace(/(<!--|-->)+/g, "").trim();
+                                } else {
+                                    return title;
+                                }
                             },
                             function (err, title) {
                                 if (err) {
                                     gutil.log(err);
                                 } else {
                                     var filename = file.replace(re_md, ".html");
-                                    glob.push({ "name":filename, "title": title });
+                                    glob.push({
+                                        "name": path.join('posts', filename),
+                                        "title": title
+                                    });
                                 }
                             }
                         );
@@ -170,12 +181,14 @@ var fs = require('fs'),
                     gutil.log("There was a problem reading md: ", e);
                 }
 
-                return gulp.src(path.join('src', 'posts', 'index.html'))
+                return gulp.src(path.join('src', 'blog', 'index.html'))
                     .pipe(mustache({ posts: glob }))
-                    .pipe(gulp.dest(path.join('dist', 'posts')));
+                    .pipe(gulp.dest(path.join('dist', 'blog')));
             }
         }
     };
+
+mustache.mustache.escape = function (text) { return text; };
 
 // Generates clean tasks
 for(prop in clean_targets) {
@@ -246,8 +259,9 @@ gulp.task('deploy', ['build'], function () {
 });
 
 gulp.task('watch', function () {
-    gutil.log("Watching html, js, less...");
+    gutil.log("Watching html, templates, js, less...");
     gulp.watch(watch_targets.html, ['html']);
     gulp.watch(watch_targets.js, ['js']);
     gulp.watch(watch_targets.less, ['less']);
+    gulp.watch(watch_targets.templates, ['index-posts', 'posts']);
 });

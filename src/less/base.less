@@ -1,5 +1,6 @@
 
 @import 'https://fonts.googleapis.com/css?family=Lustria|Raleway:300,400';
+@import 'https://fonts.googleapis.com/css?family=Libre+Baskerville';
 
 @hover-speed: 0.5s;
 @page-width: 60%;
@@ -8,6 +9,10 @@
 
 @page-background-color: #ffffff;
 @page-text-color: #414141;
+
+@blog-color: #A80002;
+@twitter-color: #55acee;
+@default-color: @page-text-color;
 
 .nav-img (@url: "?", @color: #dddddd, @size: 80%) {
     background-image: url(@url);
@@ -22,6 +27,28 @@
     &:hover {
         transition: all @hover-speed;
         border-bottom: 5px solid @color;
+    }
+}
+
+.nav-blocks (@letter: "X", @label: "X", @color: @default-color, @highlight: @default-color) {
+    border: 5px solid @default-color;
+    border-radius: 10px;
+
+    &:after {
+        font-family: "Libre Baskerville";
+        font-size: 2.7em;
+        color: @color;
+        content: @letter;
+    }
+
+    &:hover {
+        border-color: @highlight;
+        &:after {
+            color: @highlight;
+            content: @label;
+            font-size: 1em;
+            line-height: 3.2em;
+        }
     }
 }
 
@@ -82,10 +109,28 @@ nav {
 
         a {
             display: inline-block;
+            vertical-align: middle;
+            text-decoration: none;
             width: 70px;
             height: 70px;
             padding: 5px;
         }
+    }
+
+    .center-large {
+        display: block;
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            text-decoration: none;
+            width: 150px;
+            height: 150px;
+            padding: 5px;
+        }
+    }
+
+    .blog {
+
     }
 }
 
@@ -102,10 +147,14 @@ aside {
 }
 
 .github {
-    .nav-img("../img/code.png");
+    .nav-img("../img/code.png", @default-color);
+    text-decoration: none;
 }
 
-/* color src: Medium Branding */
 .blog {
-    .nav-img("../img/blog2.png", #00AB6C);
+    .nav-img("../img/blog3.png", @blog-color, 90%);
+}
+
+.home {
+    .nav-img("../img/nonelement.m.png", @default-color);
 }

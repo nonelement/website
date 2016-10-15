@@ -1,13 +1,14 @@
 <html>
     <head>
-        <link rel="stylesheet" href="css/base.css"/>
+        <link rel="stylesheet" href="../../css/base.css"/>
+        <link rel="stylesheet" href="../../css/posts.css"/>
     </head>
     <body>
         <h1>Posts</h1>
-        <div id="posts">
+        <section id="posts">
             {{#posts}}
                 <a href="{{name}}">{{title}}</a>
             {{/posts}}
-        </div>
+        </section>
     </body>
 </html>
