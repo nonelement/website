@@ -1,14 +1,33 @@
 <html>
     <head>
         <link rel="stylesheet" href="../../css/base.css"/>
-        <link rel="stylesheet" href="../../css/posts.css"/>
+        <link rel="stylesheet" href="../../css/blog.css"/>
     </head>
     <body>
-        <nav class="center-large">
-            <a class="home" title="home" href="../.."></a>
-        </nav>
-        <nav class="blog">
-            <a href="..">back</a>
+        <nav>
+            <ul>
+                <li class="home">
+                    <a title="home" alt="home" href="http://nonelement.com">
+                        <div></div>
+                        <span>home</span>
+                    </a>
+                </li><li class="twitter">
+                    <a title="twitter" alt="twitter" href="http://twitter.com/nonelement">
+                        <div></div>
+                        <span>twitter</span>
+                    </a>
+                </li><li class="github">
+                    <a title="github.com" alt="github.com" href="http://github.com/nonelement">
+                        <div></div>
+                        <span>github</span>
+                    </a>
+                </li><li class="blog">
+                    <a title="blog" alt="blog" href="blog">
+                        <div></div>
+                        <span>blog</span>
+                    </a>
+                </li>
+            </ul>
         </nav>
         <section class="column">
             {{markdown}}

@@ -1,0 +1,62 @@
+@import "variables";
+
+.column {
+    width: 60%;
+    margin: 10px auto;
+    font-size: 1.3em;
+    line-height: 1.5em;
+
+    h1 {
+        font-family: @page-serif;
+        font-size: @blog-h1-size;
+    }
+
+    h2 {
+        font-family: @page-sans;
+        font-size: @blog-h2-size;
+    }
+}
+
+#posts {
+    a {
+        font-size: @blog-link;
+        text-decoration: none;
+        color: @blog-link-color;
+
+        &:visted {
+            color: @blog-link-color-visited;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    // TODO span nav elements, adjust margins
+    @scaling: 0.8;
+    .column {
+        h1 {
+            font-size: @blog-h1-size * @scaling;
+        }
+
+        h2 {
+            font-size: @blog-h2-size * @scaling;
+        }
+
+        aside {
+            font-size: @blog-aside-size * @scaling;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .column {
+        width: 80%;
+        margin: 35% auto;
+        text-align: justify;
+    }
+
+}

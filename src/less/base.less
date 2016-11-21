@@ -2,52 +2,53 @@
 @import 'https://fonts.googleapis.com/css?family=Lustria|Raleway:300,400';
 @import 'https://fonts.googleapis.com/css?family=Libre+Baskerville';
 
-@hover-speed: 0.5s;
-@page-width: 60%;
-@page-serif: "Lustria", "Times New Roman";
-@page-sans: "Raleway", Helvetica, sans-serif;
+@import "variables";
 
-@page-background-color: #ffffff;
-@page-text-color: #414141;
-
-@blog-color: #A80002;
-@twitter-color: #55acee;
-@default-color: @page-text-color;
-
-.nav-img (@url: "?", @color: #dddddd, @size: 80%) {
-    background-image: url(@url);
-    background-size: @size;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.75;
+.nav-img (@url: "?", @color: @default-color, @size: 90%) {
+    a {
+        div {
+            background-image: url(@url);
+            background-size: @size;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.45;
+        }
+    }
 
     transition: all @hover-speed;
-    border-bottom: 5px solid @page-background-color;
+    //border-bottom: 5px solid @page-background-color;
 
     &:hover {
         transition: all @hover-speed;
-        border-bottom: 5px solid @color;
+        background-color: @color;
+
+        a {
+            div {
+                opacity: 0.75;
+            }
+        }
     }
 }
 
-.nav-blocks (@letter: "X", @label: "X", @color: @default-color, @highlight: @default-color) {
-    border: 5px solid @default-color;
-    border-radius: 10px;
-
-    &:after {
-        font-family: "Libre Baskerville";
-        font-size: 2.7em;
-        color: @color;
-        content: @letter;
+.nav-img-fixed (@url: "?", @color: @default-color, @size: 90%) {
+    a {
+        div {
+            background-image: url(@url);
+            background-size: @size;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.75;
+        }
     }
 
-    &:hover {
-        border-color: @highlight;
-        &:after {
-            color: @highlight;
-            content: @label;
-            font-size: 1em;
-            line-height: 3.2em;
+    background-color: @color;
+}
+
+.development (@alpha: 0.05) {
+    * {
+        background-color: rgba(0,0,0,@alpha);
+        &:hover {
+            background-color: rgba(0,0,0,2*@alpha);
         }
     }
 }
@@ -57,14 +58,14 @@
     padding: 0;
 }
 
-html {
+.full-height {
     height: 100%;
 }
 
 body {
+    min-width: @min-width;
     .zero-edges;
-    height: 100%;
-    min-width: 315px;
+    //.development;
 }
 
 body > div {
@@ -74,30 +75,44 @@ body > div {
 }
 
 header {
-    text-align: center;
+    width: 60%;
+    margin: 5% auto;
 
     h1 {
         font-family: @page-serif;
+        font-size: @header-h1-size;
         letter-spacing: 1px;
         .zero-edges;
     }
 
     h2 {
         font-family: @page-sans;
+        font-size: @header-h2-size;
         font-weight: 400;
-        width: @page-width;
         margin: 0px auto;
+    }
+
+    h1, h2 {
+        margin-bottom: 5%;
     }
 
     h2 + h2 {
         border-top: 2px solid black;
     }
+
+    aside {
+        font-family: @page-sans;
+        font-size: @header-aside-size;
+        color: lighten(@page-text-color, 30%);
+        font-weight: 200;
+    }
 }
 
 nav {
-    width: @page-width;
-    margin: 15px auto 15px;
-    text-align: center;
+    width: 100%;
+    min-width: @min-width;
+    .zero-edges;
+    background: rgba(255,255,255,.9);
 
     ul {
         .zero-edges;
@@ -105,15 +120,41 @@ nav {
 
     li {
         display: inline-block;
-        padding: 0px 5px 0px;
 
         a {
-            display: inline-block;
-            vertical-align: middle;
+            display: block;
             text-decoration: none;
-            width: 70px;
-            height: 70px;
-            padding: 5px;
+            padding: 15px 30px;
+            text-align: center;
+
+            div {
+                display: inline-block;
+                vertical-align: middle;
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        span {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility @hover-speed, opacity @hover-speed, transform @hover-speed;
+            color: darken(@page-background-color, 10%);
+            display: block;
+            vertical-align: middle;
+            font-family: @page-serif;
+            font-size: 1.25em;
+            line-height: 70px;
+            transform: translateY(50%);
+        }
+
+        &:hover {
+            span {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0%);
+                transition: visible @hover-speed, opacity @hover-speed, transform @hover-speed;
+            }
         }
     }
 
@@ -134,27 +175,123 @@ nav {
     }
 }
 
-aside {
-    .zero-edges;
-    text-align: center;
-    font-family: @page-sans;
-    font-weight: 400;
-}
-
 /* color src: Twitter Branding */
 .twitter {
-    .nav-img("../img/twitter.png", #55acee);
+    .nav-img("../img/twitter.png", @twitter-color);
 }
 
 .github {
-    .nav-img("../img/code.png", @default-color);
-    text-decoration: none;
+    .nav-img("../img/code2.png", @github-color);
 }
 
 .blog {
-    .nav-img("../img/blog3.png", @blog-color, 90%);
+    .nav-img("../img/blog4.png", @blog-color);
 }
 
 .home {
-    .nav-img("../img/nonelement.m.png", @default-color);
+    .nav-img("../img/nonelement.m.png");
+}
+
+@media screen and (max-width: 700px) {
+    // TODO span nav elements, adjust margins
+    @scaling: 0.8;
+    header {
+
+        margin: 10% auto 0px auto;
+
+        h1 {
+            font-size: @header-h1-size * @scaling;
+        }
+
+        h2 {
+            font-size: @header-h2-size * @scaling;
+        }
+
+        aside {
+            font-size: @header-aside-size * @scaling;
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {
+    header {
+        margin: 25% auto 0% auto;
+    }
+
+    nav {
+        width: 100%;
+        height: 10%;
+        .zero-edges;
+
+        ul {
+            .zero-edges;
+        }
+
+        li {
+            display: inline-block;
+            width: 25%;
+
+            a {
+                display: block;
+                text-decoration: none;
+                padding: 15px 0px;
+                width: 100%;
+                text-align: center;
+
+                div {
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 70px;
+                    height: 70px;
+                }
+            }
+
+            span {
+                visibility: visible;
+                opacity: 1;
+                color: darken(@page-background-color, 10%);
+                display: inline-block;
+                text-align: center;
+                width: 70px;
+                vertical-align: middle;
+                font-family: @page-serif;
+                font-size: 1.25em;
+                line-height: 70px;
+                transform: none;
+            }
+        }
+
+        .center-large {
+            display: block;
+            a {
+                display: inline-block;
+                vertical-align: middle;
+                text-decoration: none;
+                width: 150px;
+                height: 150px;
+                padding: 5px;
+            }
+        }
+
+        .blog {
+
+        }
+    }
+
+    /* color src: Twitter Branding */
+    .twitter {
+        .nav-img-fixed("../img/twitter.png", @twitter-color);
+    }
+
+    .github {
+        .nav-img-fixed("../img/code2.png", @github-color);
+    }
+
+    .blog {
+        .nav-img-fixed("../img/blog4.png", @blog-color);
+    }
+
+    .home {
+        .nav-img-fixed("../img/nonelement.m.png");
+    }
 }
