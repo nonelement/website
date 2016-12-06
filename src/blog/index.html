@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/base.css"/>
+        <link rel="stylesheet" href="../css/base.css"/>
+        <link rel="stylesheet" href="../css/blog.css"/>
     </head>
     <body>
         <nav>
@@ -29,12 +29,13 @@
                 </li>
             </ul>
         </nav>
-        <header>
-            <h1>Anthony Kirkpatrick</h1>
-            <h2>Developer, UX</h2>
-            <aside>
-                @nonelement everywhere.
-            </aside>
-        </header>
+        <section class="column">
+            <h1>Posts</h1>
+            <section id="posts">
+                {{#posts}}
+                    <a href="{{name}}">{{title}}</a>
+                {{/posts}}
+            </section>
+        </section>
     </body>
 </html>
