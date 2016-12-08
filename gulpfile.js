@@ -93,9 +93,9 @@ var fs = require('fs'),
 
     watch_targets = {
         'html': "src/index.html",
+        // 'templates': "src/blog/*.html",
         'js': "src/**/*.js",
-        'less': "src/**/*.less",
-        'templates': "src/blog/*.html"
+        'less': "src/**/*.less"
     },
 
     clean_targets = {
@@ -104,8 +104,8 @@ var fs = require('fs'),
         'less': 'css',
         'js': 'js',
         'img': 'img',
-        'posts': 'posts',
-        'index-posts': 'posts/index.html',
+        // 'posts': 'posts',
+        // 'index-posts': 'posts/index.html',
         'err': 'err'
     },
 
@@ -125,70 +125,70 @@ var fs = require('fs'),
             'src': path.join('src', 'index.html'),
             'dest': path.join('dist')
         },
-        'posts': {
-            'fn': function () {
-                var path_writing = path.join('src', 'blog');
-                return gulp.src(path.join(path_writing, 'posts/*.md'),{
-                        base: path.join(path_writing, 'md')
-                    })
-                    .pipe(markdown())
-                    .pipe(
-                        wrapWith(
-                            path.join(path_writing, 'templates', 'post.html'),
-                            "{{markdown}}"
-                        )
-                    ).pipe(gulp.dest(path.join('dist', 'blog', 'posts'), {
-                        base: '..'
-                    }));
-            }
-        },
-        'index-posts': {
-            'fn': function () {
-                var path_md = path.join('src', 'blog', 'posts'),
-                    re_md = /\.(md)$/,
-                    default_content = `<span> Nothing here! </span>`,
-                    glob = [],
-                    dir,
-                    stream;
-                try {
-                    dir = fs.readdirSync(path_md);
-                    dir.forEach(function (file) {
-                        readFirstLine(
-                            path.join(path_md, file),
-                            function (title, filename) {
-                                if (title.indexOf("#") > -1) {
-                                    return title.replace(/#/g, "").trim();
-                                } else if (title.indexOf("<!--") > -1) {
-                                    return title.replace(/(<!--|-->)+/g, "").trim();
-                                } else {
-                                    return title;
-                                }
-                            },
-                            function (err, title) {
-                                if (err) {
-                                    gutil.log(err);
-                                } else {
-                                    var filename = file.replace(re_md, ".html");
-                                    glob.push({
-                                        "name": path.join('posts', filename),
-                                        "title": title
-                                    });
-                                }
-                            }
-                        );
-                    });
-                } catch (e) {
-                    gutil.log("There was a problem reading md: ", e);
-                }
-
-                return gulp.src(path.join('src', 'blog', 'index.html'))
-                    .pipe(mustache({ posts: glob }))
-                    .pipe(gulp.dest(path.join('dist', 'blog')));
-            }
-        }
+        // 'posts': {
+        //     'fn': function () {
+        //         var path_writing = path.join('src', 'blog');
+        //         return gulp.src(path.join(path_writing, 'posts/*.md'),{
+        //                 base: path.join(path_writing, 'md')
+        //             })
+        //             .pipe(markdown())
+        //             .pipe(
+        //                 wrapWith(
+        //                     path.join(path_writing, 'templates', 'post.html'),
+        //                     "{{markdown}}"
+        //                 )
+        //             ).pipe(gulp.dest(path.join('dist', 'blog', 'posts'), {
+        //                 base: '..'
+        //             }));
+        //     }
+        // },
+        // 'index-posts': {
+        //     'fn': function () {
+        //         var path_md = path.join('src', 'blog', 'posts'),
+        //             re_md = /\.(md)$/,
+        //             default_content = `<span> Nothing here! </span>`,
+        //             glob = [],
+        //             dir,
+        //             stream;
+        //         try {
+        //             dir = fs.readdirSync(path_md);
+        //             dir.forEach(function (file) {
+        //                 readFirstLine(
+        //                     path.join(path_md, file),
+        //                     function (title, filename) {
+        //                         if (title.indexOf("#") > -1) {
+        //                             return title.replace(/#/g, "").trim();
+        //                         } else if (title.indexOf("<!--") > -1) {
+        //                             return title.replace(/(<!--|-->)+/g, "").trim();
+        //                         } else {
+        //                             return title;
+        //                         }
+        //                     },
+        //                     function (err, title) {
+        //                         if (err) {
+        //                             gutil.log(err);
+        //                         } else {
+        //                             var filename = file.replace(re_md, ".html");
+        //                             glob.push({
+        //                                 "name": path.join('posts', filename),
+        //                                 "title": title
+        //                             });
+        //                         }
+        //                     }
+        //                 );
+        //             });
+        //         } catch (e) {
+        //             gutil.log("There was a problem reading md: ", e);
+        //         }
+        //
+        //         return gulp.src(path.join('src', 'blog', 'index.html'))
+        //             .pipe(mustache({ posts: glob }))
+        //             .pipe(gulp.dest(path.join('dist', 'blog')));
+        //     }
+        // }
     };
 
-mustache.mustache.escape = function (text) { return text; };
+// mustache.mustache.escape = function (text) { return text; };
 
 // Generates clean tasks
 for(prop in clean_targets) {
@@ -246,8 +246,8 @@ gulp.task('build', [
     '_html',
     '_js',
     '_less',
-    '_index-posts',
-    '_posts',
+    // '_index-posts',
+    // '_posts',
     'config',
     'err',
     'img'
