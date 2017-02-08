@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>code</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="7" width="92" height="68" rx="2"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="92" height="68" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="code">
+            <g id="Group-4" transform="translate(4.000000, 10.000000)">
+                <g id="Group-3">
+                    <path d="M2,1.5 L36.5144897,1.5" id="Path-4" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"></path>
+                    <circle id="Oval" fill="#FFFFFF" cx="89.5" cy="1.5" r="1.5"></circle>
+                    <circle id="Oval" fill="#FFFFFF" cx="83.5" cy="1.5" r="1.5"></circle>
+                    <circle id="Oval" fill="#FFFFFF" cx="77.5" cy="1.5" r="1.5"></circle>
+                    <polyline id="Left-Angle-Bracket" stroke="#FFFFFF" stroke-width="3" points="31.0061605 24.7846154 15.6818182 40.9961207 30.9023735 57.0978307"></polyline>
+                    <polyline id="Right-Angle-Bracket" stroke="#FFFFFF" stroke-width="3" transform="translate(68.023415, 40.941223) scale(-1, 1) translate(-68.023415, -40.941223) " points="75.6855863 24.7846154 60.361244 40.9961207 75.5817994 57.0978307"></polyline>
+                    <path d="M38.0215311,54.0095443 L53.2578025,28.0518451" id="Slash" stroke="#FFFFFF" stroke-width="3"></path>
+                    <use id="Rectangle-2" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="6" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

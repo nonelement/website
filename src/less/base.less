@@ -4,7 +4,7 @@
 
 @import "variables";
 
-.nav-img (@url: "?", @color: @default-color, @size: 90%) {
+.nav-img (@url: "?", @size: 90%) {
     a {
         div {
             background-image: url(@url);
@@ -20,11 +20,10 @@
 
     &:hover {
         transition: all @hover-speed;
-        background-color: @color;
 
         a {
             div {
-                opacity: 0.75;
+                opacity: 0.85;
             }
         }
     }
@@ -62,8 +61,14 @@
     height: 100%;
 }
 
+html {
+    .full-height;
+}
+
 body {
+    background: @page-background-color;
     min-width: @min-width;
+    .full-height;
     .zero-edges;
     //.development;
 }
@@ -77,6 +82,7 @@ body > div {
 header {
     width: 60%;
     margin: 5% auto;
+    color: @page-text-color;
 
     h1 {
         font-family: @page-serif;
@@ -112,7 +118,6 @@ nav {
     width: 100%;
     min-width: @min-width;
     .zero-edges;
-    background: rgba(255,255,255,.9);
 
     ul {
         .zero-edges;
@@ -139,7 +144,7 @@ nav {
             visibility: hidden;
             opacity: 0;
             transition: visibility @hover-speed, opacity @hover-speed, transform @hover-speed;
-            color: darken(@page-background-color, 10%);
+            color: @page-text-color;
             display: block;
             vertical-align: middle;
             font-family: @page-serif;
@@ -177,19 +182,19 @@ nav {
 
 /* color src: Twitter Branding */
 .twitter {
-    .nav-img("../img/twitter.png", @twitter-color);
+    .nav-img("../img/twitter@2x.png");
 }
 
 .github {
-    .nav-img("../img/code2.png", @github-color);
+    .nav-img("../img/code@2x.png");
 }
 
 .blog {
-    .nav-img("../img/blog4.png", @blog-color);
+    .nav-img("../img/blog@2x.png");
 }
 
 .home {
-    .nav-img("../img/nonelement.m.png");
+    .nav-img("../img/nonelement@2x.png");
 }
 
 @media screen and (max-width: 700px) {
@@ -250,7 +255,7 @@ nav {
             span {
                 visibility: visible;
                 opacity: 1;
-                color: darken(@page-background-color, 10%);
+                //color: darken(@page-background-color, 10%);
                 display: inline-block;
                 text-align: center;
                 width: 70px;

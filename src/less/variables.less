@@ -5,20 +5,21 @@
 @page-sans: "Raleway", Helvetica, sans-serif;
 
 @header-h1-size: 5em;
-@blog-h1-size: 3em;
 @header-h2-size: 3em;
-@blog-h2-size: 1.5em;
 @header-aside-size: 2em;
-@blog-aside-size: 1em;
 
-@blog-link: 2em;
-@blog-link-color: @twitter-color;
-@blog-link-color-visited: @github-color;
-
-@page-background-color: #ffffff;
-@page-text-color: #414141;
+@page-top-color: #6399B3;
+@page-middle-color: #4572A7;
+@page-bottom-color: #5A459E;
+@page-background-color: linear-gradient(
+    -190deg,
+    @page-bottom-color,
+    @page-middle-color,
+    @page-top-color
+);
+@page-text-color: #ffffff;
 
 @blog-color: #547794;
 @twitter-color: #55acee;
 @github-color: #6e5494;
-@default-color: #a6a6b6;
+@default-color: #666666;
