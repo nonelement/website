@@ -1,6 +1,6 @@
 
 @import 'https://fonts.googleapis.com/css?family=Lustria|Raleway:300,400';
-@import 'https://fonts.googleapis.com/css?family=Libre+Baskerville';
+@import 'https://fonts.googleapis.com/css?family=Vollkorn';
 
 @import "variables";
 
@@ -36,11 +36,9 @@
             background-size: @size;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.75;
+            opacity: 0.85;
         }
     }
-
-    background-color: @color;
 }
 
 .development (@alpha: 0.05) {
@@ -81,13 +79,15 @@ body > div {
 
 header {
     width: 60%;
-    margin: 5% auto;
+    margin: 10% auto;
     color: @page-text-color;
 
     h1 {
         font-family: @page-serif;
+        font-weight: 300;
         font-size: @header-h1-size;
         letter-spacing: 1px;
+        margin-bottom: 2%;
         .zero-edges;
     }
 
@@ -96,10 +96,6 @@ header {
         font-size: @header-h2-size;
         font-weight: 400;
         margin: 0px auto;
-    }
-
-    h1, h2 {
-        margin-bottom: 5%;
     }
 
     h2 + h2 {
@@ -286,18 +282,18 @@ nav {
 
     /* color src: Twitter Branding */
     .twitter {
-        .nav-img-fixed("../img/twitter.png", @twitter-color);
+        .nav-img-fixed("../img/twitter@2x.png");
     }
 
     .github {
-        .nav-img-fixed("../img/code2.png", @github-color);
+        .nav-img-fixed("../img/code@2x.png");
     }
 
     .blog {
-        .nav-img-fixed("../img/blog4.png", @blog-color);
+        .nav-img-fixed("../img/blog@2x.png");
     }
 
     .home {
-        .nav-img-fixed("../img/nonelement.m.png");
+        .nav-img-fixed("../img/nonelement@2x.png");
     }
 }
