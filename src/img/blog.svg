@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>blog</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M58.6882324,62.9333333 L2.18749436,62.9333333 C0.979374586,62.9333333 0,61.9699844 0,60.8033674 L0,2.12996589 C0,0.95361821 0.990958264,0 2.18197506,0 L88.8180249,0 C90.0230965,0 91,0.963348895 91,2.12996589 L91,60.8033674 C91,61.9797151 90.0137181,62.9333333 88.8036741,62.9333333 L77.8646179,62.9333333" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="91" height="62.9333333" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="blog" stroke="#FFFFFF">
+            <g id="Group-2" transform="translate(5.000000, 13.000000)">
+                <polyline id="Path-2" stroke-width="3" stroke-linejoin="bevel" points="57.6669922 61.0063477 77.8433735 80 77.8433735 59.9552002"></polyline>
+                <ellipse id="Oval-2" stroke-width="3" cx="26.112249" cy="31.5663443" rx="5.28092369" ry="4.89967768"></ellipse>
+                <ellipse id="Oval-2" stroke-width="3" cx="45.8471888" cy="31.5663443" rx="5.28092369" ry="4.89967768"></ellipse>
+                <ellipse id="Oval-2" stroke-width="3" cx="64.485743" cy="31.5663443" rx="5.28092369" ry="4.89967768"></ellipse>
+                <use id="Rectangle-2" mask="url(#mask-2)" stroke-width="6" xlink:href="#path-1"></use>
+                <path d="M2.5,68.5 L57.7774259,68.5" id="Path-2" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M82.5,68.5 L88.5,68.5" id="Path-2" stroke-width="3" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

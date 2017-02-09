@@ -1,10 +1,10 @@
 
 @import 'https://fonts.googleapis.com/css?family=Lustria|Raleway:300,400';
-@import 'https://fonts.googleapis.com/css?family=Libre+Baskerville';
+@import 'https://fonts.googleapis.com/css?family=Vollkorn';
 
 @import "variables";
 
-.nav-img (@url: "?", @color: @default-color, @size: 90%) {
+.nav-img (@url: "?", @size: 90%) {
     a {
         div {
             background-image: url(@url);
@@ -20,11 +20,10 @@
 
     &:hover {
         transition: all @hover-speed;
-        background-color: @color;
 
         a {
             div {
-                opacity: 0.75;
+                opacity: 0.85;
             }
         }
     }
@@ -37,11 +36,9 @@
             background-size: @size;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.75;
+            opacity: 0.85;
         }
     }
-
-    background-color: @color;
 }
 
 .development (@alpha: 0.05) {
@@ -62,8 +59,14 @@
     height: 100%;
 }
 
+html {
+    .full-height;
+}
+
 body {
+    background: @page-background-color;
     min-width: @min-width;
+    .full-height;
     .zero-edges;
     //.development;
 }
@@ -76,12 +79,15 @@ body > div {
 
 header {
     width: 60%;
-    margin: 5% auto;
+    margin: 10% auto;
+    color: @page-text-color;
 
     h1 {
         font-family: @page-serif;
+        font-weight: 300;
         font-size: @header-h1-size;
         letter-spacing: 1px;
+        margin-bottom: 2%;
         .zero-edges;
     }
 
@@ -90,10 +96,6 @@ header {
         font-size: @header-h2-size;
         font-weight: 400;
         margin: 0px auto;
-    }
-
-    h1, h2 {
-        margin-bottom: 5%;
     }
 
     h2 + h2 {
@@ -112,7 +114,6 @@ nav {
     width: 100%;
     min-width: @min-width;
     .zero-edges;
-    background: rgba(255,255,255,.9);
 
     ul {
         .zero-edges;
@@ -139,7 +140,7 @@ nav {
             visibility: hidden;
             opacity: 0;
             transition: visibility @hover-speed, opacity @hover-speed, transform @hover-speed;
-            color: darken(@page-background-color, 10%);
+            color: @page-text-color;
             display: block;
             vertical-align: middle;
             font-family: @page-serif;
@@ -177,19 +178,19 @@ nav {
 
 /* color src: Twitter Branding */
 .twitter {
-    .nav-img("../img/twitter.png", @twitter-color);
+    .nav-img("../img/twitter@2x.png");
 }
 
 .github {
-    .nav-img("../img/code2.png", @github-color);
+    .nav-img("../img/code@2x.png");
 }
 
 .blog {
-    .nav-img("../img/blog4.png", @blog-color);
+    .nav-img("../img/blog@2x.png");
 }
 
 .home {
-    .nav-img("../img/nonelement.m.png");
+    .nav-img("../img/nonelement@2x.png");
 }
 
 @media screen and (max-width: 700px) {
@@ -250,7 +251,7 @@ nav {
             span {
                 visibility: visible;
                 opacity: 1;
-                color: darken(@page-background-color, 10%);
+                //color: darken(@page-background-color, 10%);
                 display: inline-block;
                 text-align: center;
                 width: 70px;
@@ -281,18 +282,18 @@ nav {
 
     /* color src: Twitter Branding */
     .twitter {
-        .nav-img-fixed("../img/twitter.png", @twitter-color);
+        .nav-img-fixed("../img/twitter@2x.png");
     }
 
     .github {
-        .nav-img-fixed("../img/code2.png", @github-color);
+        .nav-img-fixed("../img/code@2x.png");
     }
 
     .blog {
-        .nav-img-fixed("../img/blog4.png", @blog-color);
+        .nav-img-fixed("../img/blog@2x.png");
     }
 
     .home {
-        .nav-img-fixed("../img/nonelement.m.png");
+        .nav-img-fixed("../img/nonelement@2x.png");
     }
 }
