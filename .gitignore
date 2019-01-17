@@ -7,5 +7,8 @@ node_modules
 // Built
 dist/*
 
+// Cache
+.cache/*
+
 // Secrets
 credentials.json

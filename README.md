@@ -1,15 +1,6 @@
 ## website!
-This is the source to my website!
+This is the source to my website! [nonelement.com](http://nonelement.com)
 
-// TODO
-move to parcel ? -> X
-  - name ts -> js
-  - reconsolidate less
-  - make sure parcel isnt caching unnecessarily
+last updated: 01-17-2019
 
-regardless ?
-  - reimplement other components
-    - nav
-    - title
-    - consolidate this with less / styled components
-    - fix how images get processed
+Recently: upated styles, structure, added react, animations

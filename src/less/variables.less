@@ -1,25 +1,50 @@
+/* imports */
+@import (css) url(https://fonts.googleapis.com/css?family=Roboto+Mono:300,400|Roboto:300,400,500);
+@import (css) url(https://fonts.googleapis.com/css?family=Open+Sans:200,300,400);
+@import (css) url(https://fonts.googleapis.com/css?family=Ovo:400);
+
+/* measures */
+
 @min-width: 450px;
 @hover-speed: 0.5s;
-@page-width: 60%;
-@page-serif: "Times New Roman";
-@page-sans: Helvetica, sans-serif;
+@width: 60%;
 
-@header-h1-size: 5em;
-@header-h2-size: 3em;
-@header-aside-size: 2em;
+@gutter-width: 0.2em;
 
-@page-bottom-color: #6399B3;
-@page-middle-color: #4572A7;
-@page-top-color: #5A459E;
-@page-background-color: linear-gradient(
-    -190deg,
-    @page-top-color,
-    @page-middle-color,
-    @page-bottom-color
-);
-@page-text-color: #ffffff;
+/* text */
 
-@blog-color: #547794;
-@twitter-color: #55acee;
-@github-color: #6e5494;
+@serif: "Ovo", "Times New Roman";
+@sans: "Open Sans", sans-serif;
+@sans-weight: 200;
+@mono: "Roboto Mono", @sans;
+@mono-weight: 200;
+@h1-size: 4em;
+@h2-size: 2.5em;
+@aside-size: 1.6em;
+@nav-size: 1.5em;
+
+/* color */
+
+@nav-color: #fff;
+@text-color: #ffffff;
 @default-color: #666666;
+
+/* gradients */
+
+//@top-color: #20CFA1;
+//@top-color: #1D9DD7;
+@top-color: #222;
+@mid-color: #376285;
+@bottom-color: #A914DF;
+
+@background-color:
+  @top-color;
+
+@background-gradient:
+  radial-gradient(
+    170% 130% at top left,
+    @top-color,
+    darken(@top-color, 5%) 45%,
+    @mid-color 85%,
+    @bottom-color 125%,
+  );/**/

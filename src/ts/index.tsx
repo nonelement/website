@@ -1,9 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Website } from "./components/Website";
-
-import "../less/base.less";
+import {Website} from "./components/Website";
 
 ReactDOM.render(
   (<Website />),

@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@types/p5@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@types/p5/-/p5-0.7.1.tgz#6a5e7673076ff0c5f5fb47bdc3d03aabb9a68938"
+  integrity sha512-90IP0Qg4HCIfglzIUjaMGyOhjyxa7znv7jqRMvDQZ9mLmKpnRYCx7ofgqfuATNa2wb5vrKHXxutJeoW80CRMvg==
+
 "@types/prop-types@*":
   version "15.5.6"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
@@ -2076,6 +2081,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+navigation@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/navigation/-/navigation-5.1.0.tgz#f7b93c55b00619f7e4b3afc28ee28b21938abc2a"
+  integrity sha512-tWm0uOSXkqIZSSKaHYDK/SExMUMxe/hSDk4OZ8JFDQK8/evAdn15w3bzxARW4RDViKMF+TCZKs9fS5DzIGEtPQ==
+
 needle@^2.2.1:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.4.tgz#51931bff82533b1928b7d1d69e01f1b00ffd2a4e"
@@ -2278,6 +2288,11 @@ p-try@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
   integrity sha512-hMp0onDKIajHfIkdRk3P4CdCmErkYAxxDtP3Wx/4nZ3aGlau2VKh3mZpcuFkH27WQkL/3WBCPOktzA9ZOAnMQQ==
+
+p5@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/p5/-/p5-0.7.2.tgz#16255ebf50632f25ffd27b41f4ef7c6c1ffdb94c"
+  integrity sha512-EQJSvnUiB9xuGnhX+m4SWrtL7Ks6nLetu5DE+r4B+jmYZey4k3C+MJ8N05ptNL+jqpNkkuo87xoEDi6hzCv0EA==
 
 pako@~1.0.5:
   version "1.0.7"

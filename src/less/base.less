@@ -1,47 +1,10 @@
 @import "variables";
 
-.nav-img (@url: "?", @size: 90%) {
-    a {
-        div {
-            background-image: url(@url);
-            background-size: @size;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.45;
-        }
-    }
-
-    transition: all @hover-speed;
-    //border-bottom: 5px solid @page-background-color;
-
-    &:hover {
-        transition: all @hover-speed;
-
-        a {
-            div {
-                opacity: 0.85;
-            }
-        }
-    }
-}
-
-.nav-img-fixed (@url: "?", @color: @default-color, @size: 90%) {
-    a {
-        div {
-            background-image: url(@url);
-            background-size: @size;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.85;
-        }
-    }
-}
-
 .development (@alpha: 0.05) {
     * {
-        background-color: rgba(0,0,0,@alpha);
+        background-color: rgba(0, 0, 0, @alpha);
         &:hover {
-            background-color: rgba(0,0,0,2*@alpha);
+            background-color: rgba(0, 0, 0, 2 * @alpha);
         }
     }
 }
@@ -55,241 +18,206 @@
     height: 100%;
 }
 
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -99;
+}
+
 html {
     .full-height;
 }
 
 body {
-    background: @page-background-color;
-    min-width: @min-width;
-    .full-height;
-    .zero-edges;
-    //.development;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: @background-color;
+  min-width: @min-width;
+  .full-height;
+  .zero-edges;
+  //.development;
 }
 
-body > div {
-    width: @page-width;
-    margin: 0px auto;
-    padding: 150px 50px 50px;
+.centered {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 header {
-    width: 60%;
-    margin: 10% auto;
-    color: @page-text-color;
+  color: @text-color;
 
-    h1 {
-        font-family: @page-serif;
-        font-weight: 300;
-        font-size: @header-h1-size;
-        letter-spacing: 1px;
-        margin-bottom: 2%;
-        .zero-edges;
-    }
+  h1, h2, aside, nav {
+    .zero-edges;
+  }
 
-    h2 {
-        font-family: @page-sans;
-        font-size: @header-h2-size;
-        font-weight: 400;
-        margin: 0px auto;
-    }
+  h1 {
+    font-family: @serif;
+    font-size: @h1-size;
+    letter-spacing: 1px;
+  }
 
-    h2 + h2 {
-        border-top: 2px solid black;
-    }
+  h2 {
+    font-family: @sans;
+    font-size: @h2-size;
+    font-weight: @sans-weight;
+    margin-bottom: @gutter-width;
+  }
 
-    aside {
-        font-family: @page-sans;
-        font-size: @header-aside-size;
-        color: lighten(@page-text-color, 30%);
-        font-weight: 200;
-    }
+  aside {
+    font-family: @sans;
+    font-size: @aside-size;
+    color: lighten(@text-color, 30%);
+    font-weight: @mono-weight;
+    margin-bottom: @gutter-width;
+  }
 }
 
 nav {
+    display: flex;
+    flex-flow: column nowrap;
     width: 100%;
     min-width: @min-width;
     .zero-edges;
+    font-family: @sans;
 
-    ul {
-        .zero-edges;
+    &.vertical {
     }
 
-    li {
-        display: inline-block;
-
-        a {
-            display: block;
-            text-decoration: none;
-            padding: 15px 30px;
-            text-align: center;
-
-            div {
-                display: inline-block;
-                vertical-align: middle;
-                width: 70px;
-                height: 70px;
-            }
-        }
-
-        span {
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility @hover-speed, opacity @hover-speed, transform @hover-speed;
-            color: @page-text-color;
-            display: block;
-            vertical-align: middle;
-            font-family: @page-serif;
-            font-size: 1.25em;
-            line-height: 70px;
-            transform: translateY(50%);
-        }
-
-        &:hover {
-            span {
-                visibility: visible;
-                opacity: 1;
-                transform: translateY(0%);
-                transition: visible @hover-speed, opacity @hover-speed, transform @hover-speed;
-            }
-        }
+    &.horizontal {
+      flex-flow: row nowrap;
     }
 
-    .center-large {
-        display: block;
-        a {
-            display: inline-block;
-            vertical-align: middle;
-            text-decoration: none;
-            width: 150px;
-            height: 150px;
-            padding: 5px;
-        }
+    div {
+      margin: 15px 25px 0 0;
     }
 
-    .blog {
+    a {
+      &.github, &.twitter, &.blog {
+        font-size: @nav-size;
+        font-weight: 600;
+        color: @nav-color;
+        text-decoration: none;
+      }
 
+      &:hover {
+        border-bottom: 5px solid white;
+      }
     }
 }
 
-/* color src: Twitter Branding */
-.twitter {
-    .nav-img("../img/twitter@2x.png");
+.stripes {
+  position: absolute;
+  left: -400px;
+  top: 70px;
+  z-index: -99;
+
+  & > * {
+    height: 15px;
+    width: 900px
+  }
+
+  & > *:nth-child(1) {
+    height: 8px;
+    background: darken(@bottom-color, 20%);
+    transform: rotate(-45deg);
+  }
+
+  & > *:nth-child(2) {
+    height: 30px;
+    background: darken(@bottom-color, 10%);
+    transform: translate(15px, 15px) rotate(-45deg);
+  }
+
+  & > *:nth-child(3) {
+    background: darken(@bottom-color, 0%);
+    transform: translate(30px, 30px) rotate(-45deg);
+  }
 }
 
-.github {
-    .nav-img("../img/code@2x.png");
-}
-
-.blog {
-    .nav-img("../img/blog@2x.png");
-}
-
-.home {
-    .nav-img("../img/nonelement@2x.png");
-}
 
 @media screen and (max-width: 700px) {
     // TODO span nav elements, adjust margins
     @scaling: 0.8;
     header {
+      margin: 10% auto 0px auto;
 
-        margin: 10% auto 0px auto;
+      h1 {
+        font-size: @h1-size * @scaling;
+      }
 
-        h1 {
-            font-size: @header-h1-size * @scaling;
-        }
+      h2 {
+        font-size: @h2-size * @scaling;
+      }
 
-        h2 {
-            font-size: @header-h2-size * @scaling;
-        }
+      aside {
+        font-size: @aside-size * @scaling;
+      }
 
-        aside {
-            font-size: @header-aside-size * @scaling;
-        }
+      nav {
+        font-size: @nav-size * @scaling;
+      }
     }
 }
 
 @media screen and (max-width: 550px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     header {
-        width: 70%;
-        margin: 25% auto 0% auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 70%;
+
+      h1 {
+        text-align: center;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      aside {
+        text-align: center;
+      }
     }
 
     nav {
-        width: 100%;
-        height: 10%;
-        .zero-edges;
+      display: flex;
+      justify-content: space-evenly;
+      text-align: center;
+      .zero-edges;
+    }
+  }
+}
 
-        ul {
-            .zero-edges;
-        }
-
-        li {
-            display: inline-block;
-            width: 25%;
-
-            a {
-                display: block;
-                text-decoration: none;
-                padding: 15px 0px;
-                width: 100%;
-                text-align: center;
-
-                div {
-                    display: inline-block;
-                    vertical-align: middle;
-                    width: 70px;
-                    height: 70px;
-                }
-            }
-
-            span {
-                visibility: visible;
-                opacity: 1;
-                //color: darken(@page-background-color, 10%);
-                display: inline-block;
-                text-align: center;
-                width: 70px;
-                vertical-align: middle;
-                font-family: @page-serif;
-                font-size: 1.25em;
-                line-height: 70px;
-                transform: none;
-            }
-        }
-
-        .center-large {
-            display: block;
-            a {
-                display: inline-block;
-                vertical-align: middle;
-                text-decoration: none;
-                width: 150px;
-                height: 150px;
-                padding: 5px;
-            }
-        }
-
-        .blog {
-
-        }
+@media screen and (min-resolution: 200dpi) and (orientation: portrait) {
+  header {
+    h1 {
+      font-size: @h1-size * 1.3;
     }
 
-    /* color src: Twitter Branding */
-    .twitter {
-        .nav-img-fixed("../img/twitter@2x.png");
+    h2 {
+      font-size: @h2-size * 1.5;
     }
 
-    .github {
-        .nav-img-fixed("../img/code@2x.png");
+    aside {
+      font-size: @aside-size * 1.8;
     }
-
-    .blog {
-        .nav-img-fixed("../img/blog@2x.png");
+  }
+  nav {
+    font-size: @nav-size * 1.7;
+    div {
+      margin: 15px 65px 0 0;
     }
-
-    .home {
-        .nav-img-fixed("../img/nonelement@2x.png");
-    }
+  }
 }
